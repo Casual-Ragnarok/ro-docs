@@ -1,0 +1,163 @@
+﻿<!doctype html>
+	<!--[if !IE]>
+	<html class="no-js non-ie" lang="zh-CN"> <![endif]-->
+	<!--[if IE 7 ]>
+	<html class="no-js ie7" lang="zh-CN"> <![endif]-->
+	<!--[if IE 8 ]>
+	<html class="no-js ie8" lang="zh-CN"> <![endif]-->
+	<!--[if IE 9 ]>
+	<html class="no-js ie9" lang="zh-CN"> <![endif]-->
+	<!--[if gt IE 9]><!-->
+<html class="no-js" lang="zh-CN"> <!--<![endif]-->
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>在groups.conf中可用的权限开关 | RO研究手记</title>
+<meta name="generator" content="WordPress 4.1.5" />
+<style type="text/css">a, #infinite-handle span, #secondary .widget .post-content a {color:#da4453}a:hover, a:active, #secondary .widget .post-content a:hover {color: #d80d21;}.entry-content {font-family: "Microsoft Yahei", "宋体", "Hiragino Sans GB"; font-size:14px; font-weight: normal; color:#6B6B6B;}</style>
+</head>
+
+<body class="single single-post postid-11 single-format-standard">
+<div id="page" class="hfeed site">
+<div id="content" class="site-content">
+
+		<div class="top-section">
+								</div>
+
+		<div class="container main-content-area">
+			<div class="row">
+				<div class="main-content-inner">
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+		
+			
+<article id="post-11" class="post-11 post type-post status-publish format-standard hentry category-uncategorized">
+		<div class="post-inner-content">
+		<header class="entry-header page-header">
+
+			<h1 class="entry-title ">在groups.conf中可用的权限开关</h1>
+
+			<div class="entry-meta">
+				<span class="posted-on"><i class="fa fa-calendar"></i> <a  rel="bookmark"><time class="entry-date published" datetime="2015-02-11T11:01:00+00:00">2015年2月11日</time><time class="updated" datetime="2015-03-15T19:08:29+00:00">2015年3月15日</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="https://rathena.cn/">Sola丶小克</a></span></span>
+								<span class="cat-links"><i class="fa fa-folder-open-o"></i>
+					 <a  rel="category tag">未分类</a>				</span>
+								
+			</div><!-- .entry-meta -->
+		</header><!-- .entry-header -->
+
+		<div class="entry-content">
+			<p>在看本文之前请先查阅<a href="57.配置groups.conf，让普通玩家也能用GM指令.html" target="_blank">《配置groups.conf，让普通玩家也能用GM指令》</a>，本文主要讲的是<b>groups.conf</b>文件中的<b>permissions</b>字段可用的权限开关。</p>
+<p>这些开关个数也不多，大家可以在<b>doc\permissions.txt</b>中查阅相关信息，懂英文的玩家可以不看本文，直接看<b>doc\permissions.txt</b>即可！</p>
+<p><!-- more --></p>
+<p>这些权限开关我们分为三大类，分别是：</p>
+<ul>
+<li>1、基础权限</li>
+<li>2、扩展权限</li>
+<li>3、指令相关权限</li>
+</ul>
+<p>我们下面一个一个来讲解~ 每个开关我尽可能简单的概括其作用。</p>
+<p>========================<br />
+| 1. 基础权限 |<br />
+========================</p>
+<p>*can_trade</p>
+<p>允许玩家分配物品，比如交易物品、丢弃物品、挂露天商店、放仓库等</p>
+<p>———————————————————-</p>
+<p>*can_party</p>
+<p>允许玩家创建或者加入一个队伍</p>
+<p>===========================<br />
+| 2. 扩展权限 |<br />
+===========================</p>
+<p>*all_skill</p>
+<p>允许玩家无视技能树限制，随意学习所有技能。</p>
+<p>比如法师在学习“暗之壁障”之前，需要先学习“心灵爆破”，但是如果赋予了这个all_skill权限并且为true，那么可以在不学习“心灵爆破”的情况下直接学习“暗之壁障”！注意，只有在ALT+S的简易技能列表中才能无视限制。</p>
+<figure><img class="lazy lazy-hidden" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-type="image" data-lazy-src="http://blog.iwanro.com/wp-content/uploads/2015/02/tumblr_inline_njlshwAwap1t4j2l8.png" alt="image" /><noscript><img src="http://blog.iwanro.com/wp-content/uploads/2015/02/tumblr_inline_njlshwAwap1t4j2l8.png" alt="image" /></noscript></figure>
+<p>———————————————————-</p>
+<p>*all_equipment</p>
+<p>允许玩家装备任何物品，无视任何装备限制（比如职业、装备等级等等）！注意：当客户端没有这个职业拿起此武器的图档时，可能会导致客户端出错。比如弓箭手拿双刀拳刃。</p>
+<p>———————————————————-</p>
+<p>*skill_unconditional</p>
+<p>允许玩家使用任何技能，但是不受技能的使用条件影响，比如不需要SP，不需要蓝色魔力矿石等技能消耗品。</p>
+<p>———————————————————-</p>
+<p>*join_chat</p>
+<p>允许玩家在使用空密码加入任何一个被密码保护的聊天室</p>
+<p>———————————————————-</p>
+<p>*kick_chat</p>
+<p>防止玩家被踢出聊天室</p>
+<p>———————————————————-</p>
+<p>*view_hpmeter</p>
+<p>允许玩家查看其他所有玩家的HP血条</p>
+<p>———————————————————-</p>
+<p>*view_equipment</p>
+<p>允许玩家查看其他所有玩家的装备，不管目标玩家是否公开装备</p>
+<p>———————————————————-</p>
+<p>*hack_info</p>
+<p>允许玩家接收到企图用漏洞进行物品复制的玩家信息（比如当一个玩家企图把10个物品交易给另外的玩家，但是他自己身上实际上只有5个物品，这种情况下虽然很少出现，但是如果出现了就会给所有拥有hack_info权限的玩家/管理员发通知）</p>
+<p>———————————————————-</p>
+<p>*disable_pvm</p>
+<p>阻止玩家攻击野外魔物</p>
+<p>———————————————————-</p>
+<p>*disable_pvp</p>
+<p>阻止玩家攻击其他玩家</p>
+<p>———————————————————-</p>
+<p>*can_trade_bounded</p>
+<p>允许玩家对“绑定物品”做一些普通操作，比如丢弃，出售，交易等等</p>
+<p>rA有一个物品绑定系统，你可以在脚本中用getitembound来创建一些和账号、角色、队伍、公会绑定的物品。以后我们再讲解这个系统。</p>
+<p>———————————————————-</p>
+<p>*item_unconditional</p>
+<p>允许玩家无限制的使用任何消耗品，而无视这些物品的使用限制，比如物品的职业限制、性别限制、状态变更，物品延迟等等</p>
+<p>======================<br />
+| 3. 指令相关权限 |<br />
+======================</p>
+<p>*all_commands</p>
+<p>允许使用所有@开头的指令（atcommands），和#开头的指令（charcommands）！</p>
+<p>———————————————————-</p>
+<p>*disable_commands_when_dead</p>
+<p>在玩家死亡时，禁止使用@开头的指令</p>
+<p>———————————————————-</p>
+<p>*hide_session</p>
+<p>不将自己的信息，显示在@who、@whomap等指令的结果中（设置了这个权限的人，别人用@who指令是看不到你的）</p>
+<p>———————————————————-</p>
+<p>*who_display_aid</p>
+<p>在使用@who3指令时，能看到全部GM和普通玩家的角色ID和账号ID</p>
+<p>———————————————————-</p>
+<p>*any_warp</p>
+<p>允许玩家无视 ‘nowarp’, ‘nowarpto’, ‘noteleport’ 以及 ‘nomemo’ 等地图标记。以及无限制使用(@memo, @mapmove, @go, @jump) 等改变坐标的指令。</p>
+<p>———————————————————-</p>
+<p>*receive_requests</p>
+<p>允许玩家收到其他玩家使用@request命令发出的信息</p>
+<p>———————————————————-</p>
+<p>*show_bossmobs</p>
+<p>使用@showmobs命令时，也将BOSS魔物显示出来</p>
+<p>———————————————————-</p>
+<p>*channel_admin</p>
+<p>允许玩家修改 #频道 设置，无论这个玩家是否是这个频道的所有者，并且可以在不需要频道密码的情况下，直接加入被密码保护的频道。</p>
+<p>———————————————————-</p>
+<p>*use_check</p>
+<p>允许玩家使用客户端指令 /check （显示角色状态）</p>
+<p>———————————————————-</p>
+<p>*use_changemaptype</p>
+<p>允许玩家使用客户端指令 /changemaptype.</p>
+<p>———————————————————-</p>
+<p>*command_enable</p>
+<p>当和NPC对话的时候，允许玩家使用@开头的指令（atcommand）</p>
+<p>———————————————————-</p>
+<p>*bypass_stat_onclone</p>
+<p>使用 @clonestat 指令时，无视属性点的最大限制</p>
+<p>———————————————————-</p>
+<p>*bypass_max_stat</p>
+<p>允许玩家无视 conf/player.conf 中配置的属性点最大限制，最多允许把属性点加到 32,767.</p>
+<p>———————————————————-</p>
+<p>熟练使用这些权限开关，可以让你在设计玩家组别的时候更加灵活！希望大家都能动手试一下每一个权限是怎么一回事。效果是什么样子的。</p>
+					</div><!-- .entry-content -->
+</main><!-- #main -->
+	</div><!-- #primary -->
+</div><!-- #page -->
+
+
+</body>
+</html>
+

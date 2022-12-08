@@ -1,0 +1,57 @@
+﻿
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Bitmask Tools for Ragnarok Online Emulators</title>
+		<style type="text/css">
+			.likeLink { cursor: pointer; }
+			.pulsed { background-color: #7EDA18; font-size: 14px; font-weight: bold; }
+			body { margin-left: 8px; font-family: Verdana;font-size: 11px; background-color: #808080;}
+			ul { margin: 4px; padding: 2px; }
+			li { display: inline-block;background-color: #268914;padding: 6px;margin-right: 4px;margin-top: 5px;border-radius: 5px;border-color: #838673;border-spacing: 10px;font-variant: small-caps;font-weight: 200;font-size: 13px;-moz-box-shadow: 2px 2px 1px 1px #0C3005;-webkit-box-shadow: 2px 2px 1px 1px #0C3005;box-shadow:2px 2px 1px 1px #0C3005;}
+			li:hover { background-color: #248213; color: #23D91A;}
+			.box { background-color: #374973;padding: 5px;margin: 2px;border-radius: 5px;border-color: #838673;border-spacing: 3px; text-align: center; -moz-box-shadow: 2px 2px 1px 1px #0C3005; -webkit-box-shadow: 2px 2px 1px 1px #0C3005; box-shadow: 2px 2px 1px 1px #0C3005; display: inline-block; vertical-align: top; }
+			.btn { border-radius: 5px; border-color: #838673; background-color: #FFFFDF; text-align: center; }
+			.res { border-radius: 5px; border-style:outset; border-color: #000; background-color: #505050; text-align: center; color: #fff; margin-left: 3px; margin-right: 2px}
+			.title { border-radius: 5px; border-style:outset; border-color: #000; background-color: #304183; text-align: center; color: #fff; margin-left: 3px; margin-right: 2px}
+			.main { border-radius: 2px; border-color: #000; background-color: #a0a0a0; text-align: center; border-style: double; width: 100%;}
+			.footer{ width: 100%; position: fixed; left: 0; bottom: 0; background-color:#505050; filter: alpha(opacity=80); opacity: 0.8; height: 18px; text-align: right; font-family: verdana; font-size: 13px; }
+			.footer:hover {filter: alpha(opacity=0); opacity: 0; }
+			.closedwin { background-color: #797979; color: #c0c0c0;}
+		</style>
+	</head>
+	<body>
+		<script src="javascript/jquery-1.10.1.min.js"></script>
+		<script type="text/javascript">
+			// Add new bitmask objects and the page will do the rest
+			var bitmasks = {
+				"mobs": {
+					"id": "mobselector",
+					"title": "魔物行為模式遮罩",
+					"options": {
+						"0": "有移動能力",
+						"1": "會撿取物品",
+						"2": "主動攻擊",
+						"3": "群體攻擊",
+						"4": "魔法反制(發呆時)",
+						"5": "BOSS屬性",
+						"6": "草類",
+						"7": "會進行戰鬥",
+						"8": "會偵測隱形",
+						"9": "改變追蹤對象 (被技能鎖定時)",
+						"10": "改變追蹤對象(進入攻擊範圍時)",
+						"11": "會生氣",
+						"12": "改變目標(混亂時)",
+						"13": "改變目標(追蹤時被攻擊)",
+						"14": "目標比自已弱小(差5級以上)",
+						"15": "隨機目標"
+					}
+				}
+			}
+
+			// Don't mess here...
+			var tr="<tr/>",td="<td/>",div="<div/>",inp="<input/>",tp="type",tx="text",bt="button";$("body").append($("<table/>").attr("id","main").addClass("main")),$("body").append($("<div/>").addClass("footer").append($("<marquee/>").attr("behavior","scroll").attr("scrollamount","10").append($("<strong/>").text(""))));var d2h=function(a){var b=a.toString(16).toUpperCase();return"0x"+b},h2d=function(a){return parseInt(a,16),hex},isNumber=function(a){return!isNaN(parseFloat(a))&&isFinite(a)},aselect=function(a,b){$(a).find("li").each(function(a,c){var d=Math.pow(2,parseInt($(c).attr("id")));d&b?$(c).addClass("pulsed"):$(c).removeClass("pulsed")})},calc=function(a){console.log(a);var b=0,c=$(a).find("input:eq(0)"),d=$(a).find("input:eq(1)");$(a).find("li[class='likeLink pulsed']").each(function(a,c){b+=Math.pow(2,parseInt($(c).attr("id")))}),c.val(b),d.val(d2h(b))};$.each(bitmasks,function(a,b){$("#main").append($(tr).attr("colap","").append($(td).addClass("title").append($("<strong/>").text(b.title)))).append($(tr).append($(td).append($(div).attr("id",b.id).addClass("box").append($("<ul/>").attr("iid",b.id)).append($(div).addClass("res").append($(inp).attr("bt","").attr(tp,tx).addClass("btn")).append($("<b/>").text("十進位").append("<br/>")).append($(inp).attr("bt","").attr(tp,tx).addClass("btn")).append($("<b/>").text("16進位").append("<br/>")).append($(inp).attr("all","").attr(tp,bt).addClass("btn").attr("value","全選")).append($(inp).attr("none","").attr(tp,bt).addClass("btn").attr("value","清除")).append($(inp).attr("toggle","").attr(tp,bt).addClass("btn").attr("value","反向選")))))),$.each(b.options,function(a,c){$("ul[iid='"+b.id+"']").append($("<li/>").attr("id",a).text(c).addClass("likeLink"))})}),$("li").on("click",function(){$(this).hasClass("pulsed")?$(this).removeClass("pulsed"):$(this).addClass("pulsed"),calc("#"+$(this).parent().parent().attr("id"))}),$("input[all]").on("click",function(){var a="#"+$(this).parent().parent().attr("id");$(a+" ul li").addClass("pulsed"),$(a+" input:eq(0)").val("0"),calc(a)}),$("input[none]").on("click",function(){var a="#"+$(this).parent().parent().attr("id"),b=$(a+" input:eq(0)");$(a+" ul li").removeClass("pulsed"),b.val("0"),calc(a)}),$("input[toggle]").on("click",function(){var a="#"+$(this).parent().parent().attr("id"),b=$(a+" input:eq(0)");$(a+" ul li").each(function(){$(this).hasClass("pulsed")?$(this).removeClass("pulsed"):$(this).addClass("pulsed")}),b.val("0"),calc(a)}),$("input[bt]").on("change",function(){var a="#"+$(this).parent().parent().attr("id"),b=$(this).val();isNumber(b)&&aselect(a,b),calc(a)}),$("tr[colap]").addClass("likeLink").on("click",function(){$(this).find("td:eq(0)").toggleClass("closedwin"),$(this).next().toggle(100)}),$("tr[colap]:eq(0)").trigger("click"),$.each($("tr[colap]"),function(a,b){$(b).trigger("click")});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,142 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>"☆RO仙境传说☆" - MapServer报错说明</title>
+    </head>
+    <body>
+        <div>
+            <textarea rows="55" cols="100" readonly="readonly">
+错误的行号表示错误处。
+
+===========================================================
+编译时错误（指 map 服务器启动时）
+===========================================================
+
+unexpected expr end
+        预期外的表达式终止
+        在表达式开始处出现了“,”或“;”。
+
+nmatch ')'
+        “)”未匹配
+        括号“(” 和“)”不配对。
+
+unexpected newline @ string
+        字符串预料外的换行
+        字符串(以“"”括住)的中途出现了换行。
+        可能式忘了以“"”结束。
+
+unexpected eof @ string
+        字符串中出现了意外的文件结束。
+        字符串中间碰到文件结束。
+        可能式忘了以“"”结束。
+
+unexpected charactor
+        unexpected char 意外的文字
+        可能式变量名没有遵守命名规则。
+
+l14 and l15 is DEPRECATED. use @menu instead of l15.
+        不推荐使用l14或l15。请用@menu代替l15。
+
+prefix 'l' is DEPRECATED. use prefix '@' instead.
+        不推荐使用前缀“l”。请使用“@”。
+
+unmatch ']'
+        没有“]”。
+        括号“]”忘记写了。
+
+expect function
+        未找到函数
+        函数调用演算符“(”的前面出现了函数以外的标号(译注：此处的标号指symbol,下同)。
+        也许弄错函数名。
+
+expect ',' or ')' at func params
+        函数的参数“,”或“)”错误
+        也许忘记加分割参数的“,”或“)”了。
+
+func request '(' ')'
+        调用函数的括号对应问题
+        也许参数数量超过了128个。
+
+illeagal number of parameters
+        参数个数不正确
+        函数/命令的参数个数不同。
+        请确认参数的个数。
+        错误位置为所有参数之后。
+
+expect command
+        命令错误
+        出现了命令意外的标号。
+        也许弄错了命令名。
+
+expect ',' or ';' at cmd params
+        在命令的参数方面“,”或“;”错误
+        也许分割参数的“,”或“;”忘记了。
+
+need ';'
+        需要“;”
+        也许参数的数量超越了128。
+
+
+===========================================================
+运行时错误
+===========================================================
+
+fatal error ! player not attached!
+        致命错误！没有关联玩家！
+
+        在无法确定人物的事件中执行的脚本中访问了需要人物情报的命令，
+        函数或变量。请使用attachrid函数或不需要人物情报的命令。
+        或者是，attachrid函数中设定的情报不正确。
+        并且，产生此种错误的话会立即导致coredump。
+        (译注：coredump,unix类系统种非法操作的后果,向硬盘写入内存内容便于debug)
+        在以NPC为主体的事件中announce时没有指定0x08的情况下也会产生此种错误。
+
+illeagal scope string variable.
+        字符串变量的可视范围不正确。
+        使用了非对应前缀符的字符串变量。
+        请确认前缀符。
+
+illeagal scope
+        可视范围错误。对持有数组变量不适用前缀符的变量
+        执行了数组变量类的命令的情况等。
+
+not label !
+        goto/menu命令中需要指定标签的地方指定了非标签标号。
+        或者是标签名和变量名重复了。
+
+buildin_set: not name
+        set命令第一参数不是变量名。
+
+getelementofarray (operator[]): param2 illeagal number
+        数组变量[]内的数值不正确
+        []内的数值小于0或大于127了
+
+getelementofarray (operator[]): param1 not name
+        数组变量的[]的前面的标号不是变量名。
+
+op_2: int&str, str&int not allow.
+        关系演算符（比较演算符）指定成了数值与字符串，
+        或字符串与数值的比较。
+
+infinity loop !
+        脚本的执行命令数，或goto/menu命令的执行次数过多
+        所以被判断为无限循环。
+        脚本的执行被强制终止。
+
+not function and command !
+        函数实行部/命令实行部中，存在既非函数也非命令的标号。
+        存在于if语句中的可能性高。
+
+return without callfunc or callsub !
+        虽然没有被callfunc或callsub，但是有return命令。
+
+stack.sp(?) != default(?)
+        堆栈指针与堆栈基址不同。
+        在命令执行后，堆栈指针出现了错误。
+        可能是将函数当作命令来执行了。
+        (译注：子函数运行中需要使用临时堆栈，在返回后堆栈指针需要与调用前相同)
+            </textarea>
+        </div>
+        <br/>
+    </body>
+</html>
