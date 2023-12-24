@@ -1051,6 +1051,10 @@ tr.notsupported {
 	color: #999999;
 }
 
+/* 添加表格样式以实现垂直居中 */
+#function th, #function td {
+	vertical-align: middle;
+}
 
 
 /* ----------------------------------- browsersupport ----------------------------------- */
