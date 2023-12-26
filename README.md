@@ -8,3 +8,4 @@
 
 有些资料虽然已经过时，但是有一定的参考价值。
 
+<img src="./docs/imgs/wechat.jpg" width="200px"/>
