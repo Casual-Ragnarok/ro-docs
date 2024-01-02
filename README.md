@@ -1,8 +1,6 @@
 # ro-documents
 
-> 仙境 RO 传说 - 历年资料收录
-
-https://docs.ragnarok.buzz/
+> 仙境 RO 传说 - 历年资料收录： https://docs.ragnarok.buzz/
 
 ------
 
