@@ -1,0 +1,192 @@
+<html>
+<head>
+<title>Sprite Name Generator - Sprite Guide - By Raff</title>
+<style>
+.f1 { font-family: Arial, Helvetica, sans-serif; color: #000066; font-size: 11px; text-decoration: bold; }
+.f2 { font-family: Arial, Helvetica, sans-serif; color: #000026; font-size: 12px; text-decoration: bold; }
+.f3 { font-family: Arial; color: #260026; font-size: 13px; text-decoration: sans-serif;	}
+.f4 { font-family: Arial, Helvetica, sans-serif; color: blue; font-size: 10px; text-decoration: bold; }
+</style>
+<script language=JavaScript>
+	function checkvisible()
+	{
+		if (document.weaponmak.wtyp.options[document.weaponmak.wtyp.selectedIndex].value != 0)
+		{
+			document.weaponmak.A13.checked = false;
+			document.weaponmak.A21.checked = false;
+			document.weaponmak.A23.checked = false;
+			document.weaponmak.A13.disabled = true;
+			document.weaponmak.A21.disabled = true;
+			document.weaponmak.A23.disabled = true;
+		}
+		else
+		{
+			document.weaponmak.A13.disabled = false;
+			document.weaponmak.A21.disabled = false;
+			document.weaponmak.A23.disabled = false;
+		}
+	}
+	function xswt(s)
+	{
+		if (!s.disabled)
+		{
+			s.checked=!s.checked;
+			return true;
+		}
+	}
+	function roshow(tit,fls)
+	{
+		if (document.weaponmak.wtyp.options[document.weaponmak.wtyp.selectedIndex].value == 0) { rt = document.weaponmak.froot.value + document.weaponmak.froot1.value; sprn = "Weapon";}
+		if (document.weaponmak.wtyp.options[document.weaponmak.wtyp.selectedIndex].value == 1) { rt = document.weaponmak.froot.value + document.weaponmak.froot2.value; sprn = "Shield";}
+		if (document.weaponmak.wtyp.options[document.weaponmak.wtyp.selectedIndex].value == 2) { rt = document.weaponmak.froot.value + document.weaponmak.froot3.value; sprn = "Hat";}
+		log("----------------------------------------------------------------------------------------------------------------------");
+		log("--==" + sprn + " for " + tit + "==--");
+		log(" male:\t\t" + fls + "_남_" + document.weaponmak.ITC.value + ".spr");
+		if (document.weaponmak.wtyp.options[document.weaponmak.wtyp.selectedIndex].value == 0) log(" male fx:\t\t" + fls + "_남_" + document.weaponmak.ITC.value + "_" + document.weaponmak.fx.value + ".spr" );
+		log(" female:\t\t" + fls + "_여_" + document.weaponmak.ITC.value + ".spr");
+		if (document.weaponmak.wtyp.options[document.weaponmak.wtyp.selectedIndex].value == 0) log(" female fx:\t\t" + fls + "_여_" + document.weaponmak.ITC.value + "_" + document.weaponmak.fx.value + ".spr" );
+		log(" copy in:\t\t" + rt + fls);
+		return true;
+	}
+	function xcalc()
+	{
+		document.weaponmak.outp.value = "";
+		if (document.weaponmak.A0.checked) roshow("Novice","초보자");
+		if (document.weaponmak.A1.checked) roshow("Swordman","검사");
+		if (document.weaponmak.A2.checked) roshow("Magician","마법사");
+		if (document.weaponmak.A3.checked) roshow("Archer","궁수");
+		if (document.weaponmak.A4.checked) roshow("Acolyte","성직자");
+		if (document.weaponmak.A5.checked) roshow("Merchant","상인");
+		if (document.weaponmak.A6.checked) roshow("Thief","도둑");
+		if (document.weaponmak.A7.checked) roshow("Knight","기사");
+		if (document.weaponmak.A8.checked) roshow("Priest","프리스트");
+		if (document.weaponmak.A9.checked) roshow("Wizard","위저드");
+		if (document.weaponmak.A10.checked) roshow("Blacksmith","제철공");
+		if (document.weaponmak.A11.checked) roshow("Hunter","헌터");
+		if (document.weaponmak.A12.checked) roshow("Assasin","어세신");
+		if (document.weaponmak.A13.checked) roshow("Knight (Peco)","페코페코_기사");
+		if (document.weaponmak.A14.checked) roshow("Crusader","크루세이더");
+		if (document.weaponmak.A15.checked) roshow("Monk","용병");
+		if (document.weaponmak.A16.checked) roshow("Sage","세이지");
+		if (document.weaponmak.A17.checked) roshow("Roge","로그");
+		if (document.weaponmak.A18.checked) roshow("Alchemist","연금술사");
+		if (document.weaponmak.A19.checked) roshow("Bard","바드");
+		if (document.weaponmak.A20.checked) roshow("Dancer","무희");
+		if (document.weaponmak.A21.checked) roshow("Crusader (peco)","신페코크루세이더");
+		if (document.weaponmak.A22.checked) roshow("Super Novice","슈퍼노비스");
+		if (document.weaponmak.A23.checked) roshow("Game Master","운영자");
+		if (document.weaponmak.A24.checked) roshow("Gunslinger","건너");
+		if (document.weaponmak.A25.checked) roshow("Tae Kwon","태권소년");
+		if (document.weaponmak.A26.checked) roshow("Ninja","닌자");
+		if (document.weaponmak.A27.checked) roshow("Mercenary","용병");
+		log("----------------------------------------------------------------------------------------------------------------------");
+		log("   Notes:");
+		log("----------------------------------------------------------------------------------------------------------------------");
+		if (document.weaponmak.wtyp.options[document.weaponmak.wtyp.selectedIndex].value == 2) {
+			log("   * Warning: Hats needs a valid 'View ID' - Ids are Client Dependent.\n");
+			log("              Check this URL for more information:\n");
+			log("              http://www.eathena.ws/board/index.php?showtopic=58418");
+			log("              (Naru - Project Of Free View Id Listing)\n");
+		}
+		log("   1) All sprites require a .act file with the same name of the .spr\n");
+		log("   2) Create the Drop sprite in " + document.weaponmak.froot.value + "아이템 folder.");
+		log("      * Use your item files and rename like your database conf.");
+		log("        sample: my_item.spr/act (i recomend Spr_Conview to create a small drop sprite) \n");
+		log("   3) Create the item images in Data\\Texture\\유저인터페이스 folder");
+		log("      * Inventory picture is a bmp image (75x100), put in Collection folder");
+		log("        use the item name, sample: my_item.bmp");
+		log("      * Drag picture is a bmp image (24x24), put in Item folder");
+		log("        use the item name, sample: my_item.bmp");
+		log("   4) Your client will need the right " + document.weaponmak.ITC.value + " item definition in:");
+		log("      * idnum2itemdesctable.txt");
+		log("      * idnum2itemdisplaynametable.txt");
+		log("      * idnum2itemresnametable.txt");
+		log("      * num2itemdesctable.txt");
+		log("      * num2itemdisplaynametable.txt");
+		log("      * num2itemresnametable.txt");
+		log("      * itemslotcounttable.txt");
+		log("----------------------------------------------------------------------------------------------------------------------");
+
+		return true;
+	}
+	function log(t)
+	{
+		document.weaponmak.outp.value = document.weaponmak.outp.value + t + "\n";
+		return true;
+	}
+</script>
+</head>
+
+<body onload="javascript:xcalc()">
+<form name=weaponmak method=get>
+<input type=hidden name=froot value="RO\Data\Sprite\">
+<input type=hidden name=froot1 value="인간족\" xname="Weapon">
+<input type=hidden name=froot2 value="방패\" xname="Shield">
+<input type=hidden name=froot3 value="악세사리\" xname="Head">
+<input type=hidden name=fx value="검광">
+<table border=2 bgcolor=silver>
+<tr>
+	<th align=center colspan=7><b class=f2>-=SPRITE NAME GENERATOR FOR EATHENA=-</b></th>
+</tr>
+<tr>
+	<td align=center colspan=7><b class=f1>Select Job, put the item_id then press Make It!</b></td>
+</tr>
+<tr>
+	<td>
+		<input type=checkbox name=A0><a class=f1 onclick="javascript:xswt(document.weaponmak.A0);">Novice</a><br>
+		<input type=checkbox name=A1><a class=f1 onclick="javascript:xswt(document.weaponmak.A1);">Swordsman</a><br>
+		<input type=checkbox name=A2><a class=f1 onclick="javascript:xswt(document.weaponmak.A2);">Magician</a><br>
+		<input type=checkbox name=A3><a class=f1 onclick="javascript:xswt(document.weaponmak.A3);">Archer</a>
+	</td>
+	<td>
+		<input type=checkbox name=A4><a class=f1 onclick="javascript:xswt(document.weaponmak.A4);">Acolyte</a><br>
+		<input type=checkbox name=A5><a class=f1 onclick="javascript:xswt(document.weaponmak.A5);">Merchant</a><br>
+		<input type=checkbox name=A6><a class=f1 onclick="javascript:xswt(document.weaponmak.A6);">Thief</a><br>
+		<input type=checkbox name=A7><a class=f1 onclick="javascript:xswt(document.weaponmak.A7);">Knight</a>
+	</td>
+	<td>
+		<input type=checkbox name=A8><a class=f1 onclick="javascript:xswt(document.weaponmak.A8);">Priest</a><br>
+		<input type=checkbox name=A9><a class=f1 onclick="javascript:xswt(document.weaponmak.A9);">Wizard</a><br>
+		<input type=checkbox name=A10><a class=f1 onclick="javascript:xswt(document.weaponmak.A10);">Blacksmith</a><br>
+		<input type=checkbox name=A11><a class=f1 onclick="javascript:xswt(document.weaponmak.A11);">Hunter</a>
+	</td>
+	<td>
+		<input type=checkbox name=A12><a class=f1 onclick="javascript:xswt(document.weaponmak.A12);">Assassin</a><br>
+		<input type=checkbox name=A13><a id=sp1 class=f1 onclick="javascript:xswt(document.weaponmak.A13);">Knight (peco)</a><br>
+		<input type=checkbox name=A14><a class=f1 onclick="javascript:xswt(document.weaponmak.A14);">Crusader</a><br>
+		<input type=checkbox name=A15><a class=f1 onclick="javascript:xswt(document.weaponmak.A15);">Monk</a>
+	</td>
+	<td>
+		<input type=checkbox name=A16><a class=f1 onclick="javascript:xswt(document.weaponmak.A16);">Sage</a><br>
+		<input type=checkbox name=A17><a class=f1 onclick="javascript:xswt(document.weaponmak.A17);">Rogue</a><br>
+		<input type=checkbox name=A18><a class=f1 onclick="javascript:xswt(document.weaponmak.A18);">Alchemist</a><br>
+		<input type=checkbox name=A19><a class=f1 onclick="javascript:xswt(document.weaponmak.A19);">Bard</a>
+	</td>
+	<td>
+		<input type=checkbox name=A20><a class=f1 onclick="javascript:xswt(document.weaponmak.A20);">Dancer</a><br>
+		<input type=checkbox name=A21><a id=sp1 class=f1 onclick="javascript:xswt(document.weaponmak.A21);">Crusader (peco)</a><br>
+		<input type=checkbox name=A22><a class=f1 onclick="javascript:xswt(document.weaponmak.A22);">Super Novice</a><br>
+		<input type=checkbox name=A23><a class=f1 onclick="javascript:xswt(document.weaponmak.A23);">GM</a>
+	</td>
+	<td>
+		<input type=checkbox name=A24><a class=f1 onclick="javascript:xswt(document.weaponmak.A24);">Gunslinger</a><br>
+		<input type=checkbox name=A25><a class=f1 onclick="javascript:xswt(document.weaponmak.A25);">Tae Kwon</a><br>
+		<input type=checkbox name=A26><a class=f1 onclick="javascript:xswt(document.weaponmak.A26);">Ninja</a><br>
+		<input type=checkbox name=A27><a class=f1 onclick="javascript:xswt(document.weaponmak.A27);">Mercenary</a>
+	</td>
+</tr>
+<tr>
+	<td align=center><a class=f2><b>Item_id:</b></a></td>
+	<td align=center><input type=text size=10 name=ITC value=10000></td>
+	<td align="center"><a class=f2><b>Item Type</b></a></td>
+	<td colspan=2 align="center"><select name=wtyp class=f2 onchange="javascript:checkvisible()"><option value=0>Weapon</option><option value=1>Shield</option><option value=2>Hat</option></select></td><td colspan=2 align=center><input type=button value="Make It!" onclick="javascript:xcalc()"></td>
+</tr>
+<tr>
+	<td align=center colspan=7><textarea class=f3 name=outp rows=15 cols=110></textarea></td>
+</tr>
+<tr>
+	<td align=center colspan=7><a class=f4>(c) 2005-2006 by </a><a class=f4 href="mailto:admin@pow4ever.com">Myzter (Raff)</a> - </a><a class=f4 href="http://www.pow4ever.com">Pow4Ever.com</a></td>
+</tr>
+</body>
+</table>
+</html>
