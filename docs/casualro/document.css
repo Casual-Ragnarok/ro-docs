@@ -48,3 +48,12 @@ html{scroll-padding-top:100px}
 .cro-reading table tr:nth-child(odd),.cro-reading table tr:nth-child(odd)>td{background:#fffdfc!important}
 .cro-reading table tr:nth-child(even),.cro-reading table tr:nth-child(even)>td{background:#fff6fa!important}
 .cro-reading table tr:hover,.cro-reading table tr:hover>td,.cro-reading table tr:focus-within,.cro-reading table tr:focus-within>td{background:#f8e7ef!important}
+
+/* Resource compatibility notes. */
+.cro-resource-notice{display:flex;align-items:flex-start;gap:16px;text-align:left;box-sizing:border-box;padding:22px 26px;margin:24px 0;background:linear-gradient(120deg,#fff3f7,#faf5ff);border:1px solid #eedce7;border-radius:18px;color:#806b7c;line-height:1.8}
+.cro-resource-notice .cro-notice-icon{flex:0 0 38px;height:38px;display:grid;place-items:center;background:#fffdfc;border-radius:12px;color:#bc7896;font-size:22px}
+.cro-resource-notice strong{display:block;font-size:16px;color:#795367;letter-spacing:.03em}
+.cro-resource-notice p,.cro-reading .cro-resource-notice p{margin:5px 0 0;font-size:14px;font-weight:400}
+.cro-resource-notice a{color:#a45379;text-underline-offset:3px}
+.cro-reading .cro-resource-heading{text-align:left;margin:12px 0 22px;font-size:28px}
+@media(max-width:600px){.cro-resource-notice{padding:18px 16px;gap:12px}.cro-resource-notice .cro-notice-icon{flex-basis:30px;height:30px}.cro-reading .cro-resource-heading{font-size:23px}}

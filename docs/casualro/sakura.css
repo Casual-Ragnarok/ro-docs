@@ -9,3 +9,5 @@ body{background:radial-gradient(ellipse at 0 20%,#fceaf080,transparent 45%),radi
 /* Keep only the site navigation sticky, not article headings. */
 body > header, header#header{position:sticky;top:0;z-index:1200;background:#fffcfa;isolation:isolate}
 html{scroll-padding-top:150px}
+
+.resource h3 .resource-title-link{font:inherit;color:inherit;text-decoration:none}.resource h3 .resource-title-link:hover{text-decoration:underline;text-underline-offset:4px;color:#a45379}.resource-title-link:focus-visible{outline:2px solid #b9567b;outline-offset:4px;border-radius:3px}

@@ -18,3 +18,7 @@
 .cro-footer-qr{text-align:center}.cro-footer-bottom{border-top:1px solid #ecdbe4;margin-top:28px;padding-top:18px;display:flex;gap:24px;align-items:center;justify-content:space-between}.cro-footer-bottom p{font-size:11px;color:#a68a9b;margin:0;max-width:660px}.cro-footer-bottom>span{white-space:nowrap}
 @media(max-width:1000px){.cro-footer-grid{grid-template-columns:2fr 1fr}.cro-footer-bottom{display:block}.cro-footer-bottom p{margin-top:10px}}
 @media(max-width:650px){.cro-community-footer{padding:24px;text-align:left}.cro-footer-grid{grid-template-columns:1fr 1fr;gap:24px 16px}.cro-footer-about{grid-column:1/-1}.cro-footer-qr{grid-column:1/-1}.cro-footer-links h3{font-size:13px}}
+
+/* Footer links use color feedback without legacy underlines. */
+body footer a,body footer a:hover,body footer a:focus,body .cro-community-footer a,body .cro-community-footer a:hover,body .cro-community-footer a:focus{text-decoration:none!important;border-bottom:0!important;box-shadow:none!important}
+body footer a:hover,body .cro-community-footer a:hover{color:#803857!important}

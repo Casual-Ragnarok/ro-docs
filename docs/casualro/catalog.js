@@ -12,14 +12,16 @@ const safeUrl = value => {
     return '#';
   }
 };
-function link(item, label, cls = 'text-link') {
+function isDownload(item) {
+  return /\.(?:zip|7z|rar|tar|gz|bz2|xz|exe|msi|msix|dmg|pkg|apk|grf|rgz|gpf|chm|docx?|xlsx?|pptx?)$/i.test(new URL(safeUrl(item?.url), document.baseURI).pathname);
+}
+function link(item, label, cls = 'text-link', titleOnly = false) {
   if (!item) return '';
   const url = safeUrl(item.url);
   const external = new URL(url, location.href).origin !== location.origin;
   const target = external ? ' target="_blank" rel="noopener noreferrer"' : '';
-  const anchor = `<a class="${cls}" href="${esc(url)}"${target}>${esc(label || item.text || '查看')} ${external ? '↗' : '→'}</a>`;
-  const pdf = !external && /\.pdf$/i.test(new URL(url, location.href).pathname);
-  return anchor + (pdf ? ` <a class="text-link" href="${esc(url)}" download>下载 PDF ↓</a>` : '');
+  const anchor = `<a class="${cls}" href="${esc(url)}"${target}>${esc(label || item.text || '查看')} ${titleOnly ? '' : isDownload(item) ? '↓' : external ? '↗' : '→'}</a>`;
+  return anchor;
 }
 document.querySelector('#header').innerHTML = `<a class="skip" href="#main">跳到主要内容</a><div class="nav-wrap"><a class="brand" href="https://www.casualro.top/"><span class="brand-mark" aria-hidden="true">✿</span><span>随缘仙境<small>CASUAL RAGNAROK</small></span></a><nav aria-label="主导航">${nav.map(([id,name,url])=>`<a href="${url}" ${id===page?'aria-current="page"':''} ${id==='store'?'target="_blank" rel="noopener noreferrer"':''}>${name}</a>`).join('')}</nav><span class="nav-note" aria-hidden="true">♡ Have a lovely adventure</span></div>`;
 document.querySelector('#footer').innerHTML = '<span>✿ 随缘仙境 · Casual Ragnarok Online</span><span>愿每一次传送，都通往喜欢的地方。 ♡</span>';
@@ -74,7 +76,7 @@ async function initCatalog() {
     if (page==='npcs') {
       results.innerHTML = `<div class="table-shell" role="region" aria-label="脚本列表，可横向滚动" tabindex="0"><table><thead><tr><th scope="col">编号</th><th scope="col">脚本 / 功能简介</th><th scope="col">适用系列</th><th scope="col">价格</th><th scope="col">快捷入口</th></tr></thead><tbody>${filtered.map(({cells:c})=>`<tr><td class="id-cell">${esc(c[0].text)}</td><td><span class="product-title">${esc(c[1].text)}</span><p class="product-desc">${esc(c[4].text)}</p></td><td><span class="tag">${esc(c[3].text)}</span><span class="version">${esc(c[2].text)}</span></td><td class="price">${esc(c[7].text)}</td><td><div class="row-links">${c[5].links.map(l=>link(l,'详情')).join('')}${c[6].links.map(l=>link(l,'演示')).join('')}${c[8].links.map(l=>link(l,'购买')).join('')}</div></td></tr>`).join('')}</tbody></table></div>`;
     } else if (page==='docs') {
-      results.innerHTML = `<div class="resource-list">${filtered.map(({cells:c})=>`<article class="resource"><div><span class="tag">${esc(c[1].text)}</span><h3>${esc(c[2].text)}</h3><p>${esc(c[3].text)}</p>${c[3].links.map(l=>link(l)).join(' ')}<span class="muted" aria-label="原站推荐度">${esc(c[0].text)}</span></div><div class="resource-actions">${c[4].links.map(l=>link(l,'查看资料','button secondary')).join('')}</div></article>`).join('')}</div>`;
+      results.innerHTML = `<div class="resource-list">${filtered.map(({cells:c})=>`<article class="resource"><div><span class="tag">${esc(c[1].text)}</span><h3>${c[4].links.length ? link(c[4].links[0],c[2].text,'resource-title-link',true) : esc(c[2].text)}</h3><p>${esc(c[3].text)}</p>${c[3].links.map(l=>link(l)).join(' ')}<span class="muted" aria-label="原站推荐度">${esc(c[0].text)}</span></div><div class="resource-actions">${c[4].links.map(l=>link(l,isDownload(l)?'下载资料':'查看资料','button secondary')).join('')}</div></article>`).join('')}</div>`;
     } else {
       results.innerHTML = `<div class="resource-list">${filtered.map(({cells:c})=>`<article class="resource"><div><span class="tag">${c[2].checked?'必装':'可选'}${c[1].checked?' · 已加密':''}</span><h3>${esc(c[0].text)}</h3><p>${esc(c[3].text)}</p>${c[3].links.map(l=>link(l)).join(' ')}${c[3].images.map(url=>link({url},'查看效果图')).join(' ')}<p><strong>加载顺序：</strong>${esc(c[4].text)}</p></div><div class="resource-actions">${c[5].links.map(l=>link(l,l.text,'button secondary')).join('')}${c[6].text?`<button class="copy" type="button" data-copy="${esc(c[6].text)}" aria-label="复制提取码 ${esc(c[6].text)}">提取码 ${esc(c[6].text)} · 复制</button>`:''}</div></article>`).join('')}</div>`;
     }
