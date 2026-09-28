@@ -1,7 +1,7 @@
 /* Shared theme for archived documents and tools. Original content stays in place. */
 html{background:#fff9f7!important}
 body{margin:0!important;padding:110px 5vw 48px!important;background-color:#fff9f7!important;color:#584252!important;font-family:"Segoe UI","Microsoft YaHei",sans-serif!important;font-size:14px;line-height:1.85}
-#cro-document-nav{box-sizing:border-box;position:absolute;top:0;left:0;width:100%;min-height:82px;padding:18px 5vw;background:#fffcfa;border-bottom:1px solid #f0dfe5;display:flex;align-items:center;justify-content:space-between;gap:20px;font:14px/1.5 "Segoe UI","Microsoft YaHei",sans-serif;color:#795367;z-index:1000}
+#cro-document-nav{box-sizing:border-box;position:fixed;top:0;left:0;width:100%;min-height:82px;padding:18px 5vw;background:#fffcfa;border-bottom:1px solid #f0dfe5;display:flex;align-items:center;justify-content:space-between;gap:20px;font:14px/1.5 "Segoe UI","Microsoft YaHei",sans-serif;color:#795367;z-index:1000}
 #cro-document-nav a{color:#a45379!important;text-decoration:none!important;background:transparent!important}
 #cro-document-nav .cro-brand{font-size:21px;font-weight:700;letter-spacing:2px}
 #cro-document-nav small{display:block;font-size:9px;letter-spacing:2px;color:#b6899d}
@@ -34,9 +34,12 @@ body.cro-reading{max-width:1440px;box-sizing:border-box;margin:auto!important}
 .cro-reading tbody tr:nth-child(even){background:#fff6fa!important}
 .cro-reading td:last-child{min-width:65px}
 body.cro-simulator{position:relative;margin:100px 0 0!important;padding:0!important;line-height:normal;font-size:12px}
-.cro-simulator #cro-document-nav{top:-100px;height:82px}
+.cro-simulator #cro-document-nav{top:0;height:82px}
 .cro-simulator table.job{border-color:#d9b9cc!important;border-radius:5px;color:#795367}
 
 /* Skill prerequisites are drawn in each legacy page body background image. */
 body:not(.cro-simulator){background-image:radial-gradient(ellipse at 0 20%,#fceaf080,transparent 45%),radial-gradient(ellipse at 100% 60%,#ede5ff66,transparent 40%)}
 body.cro-simulator{background-repeat:no-repeat!important;background-position:0 0!important;min-height:1200px}
+
+/* Keep anchored sections visible beneath the fixed navigation. */
+html{scroll-padding-top:100px}
