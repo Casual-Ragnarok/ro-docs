@@ -43,3 +43,8 @@ body.cro-simulator{background-repeat:no-repeat!important;background-position:0 0
 
 /* Keep anchored sections visible beneath the fixed navigation. */
 html{scroll-padding-top:100px}
+
+/* Cover both zebra stripes and hover; legacy page.css colors rows directly. */
+.cro-reading table tr:nth-child(odd),.cro-reading table tr:nth-child(odd)>td{background:#fffdfc!important}
+.cro-reading table tr:nth-child(even),.cro-reading table tr:nth-child(even)>td{background:#fff6fa!important}
+.cro-reading table tr:hover,.cro-reading table tr:hover>td,.cro-reading table tr:focus-within,.cro-reading table tr:focus-within>td{background:#f8e7ef!important}
