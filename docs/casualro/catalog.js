@@ -1,6 +1,6 @@
 const page = document.body.dataset.page || 'home';
 document.title = `${({home:'首页',npcs:'NPC 脚本索引',docs:'文档与工具资料',downloads:'客户端补丁'})[page]} · 随缘仙境`;
-const nav = [['home','首页','https://www.casualro.top/'],['npcs','NPC 索引','https://npc.casualro.top/'],['store','脚本商城 ↗','https://store.casualro.top/'],['docs','文档资料','https://docs.casualro.top/'],['downloads','补丁下载','https://grf.casualro.top/']];
+const nav = [['home','首页','https://www.casualro.top/'],['npcs','NPC 索引','https://npc.casualro.top/'],['store','脚本商城','https://store.casualro.top/'],['docs','文档资料','https://docs.casualro.top/'],['downloads','补丁下载','https://grf.casualro.top/']];
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const safeUrl = value => {
   try {
