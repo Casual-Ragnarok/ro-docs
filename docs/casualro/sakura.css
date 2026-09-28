@@ -11,3 +11,5 @@ body > header, header#header{position:sticky;top:0;z-index:1200;background:#fffc
 html{scroll-padding-top:150px}
 
 .resource h3 .resource-title-link{font:inherit;color:inherit;text-decoration:none}.resource h3 .resource-title-link:hover{text-decoration:underline;text-underline-offset:4px;color:#a45379}.resource-title-link:focus-visible{outline:2px solid #b9567b;outline-offset:4px;border-radius:3px}
+
+.catalog-action-icon{display:inline-block;vertical-align:-3px;flex-shrink:0;margin-left:5px;opacity:.85}

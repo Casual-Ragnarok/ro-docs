@@ -15,12 +15,18 @@ const safeUrl = value => {
 function isDownload(item) {
   return /\.(?:zip|7z|rar|tar|gz|bz2|xz|exe|msi|msix|dmg|pkg|apk|grf|rgz|gpf|chm|docx?|xlsx?|pptx?)$/i.test(new URL(safeUrl(item?.url), document.baseURI).pathname);
 }
+function actionIcon(download) {
+  const path = download
+    ? '<path d="M12 3v12m-4-4 4 4 4-4M5 16v4h14v-4"/>'
+    : '<path d="M12 6c-3-2-6-2-9-1v14c3-1 6-1 9 1 3-2 6-2 9-1V5c-3-1-6-1-9 1Zm0 0v14"/>';
+  return `<svg class="catalog-action-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${path}</svg>`;
+}
 function link(item, label, cls = 'text-link', titleOnly = false) {
   if (!item) return '';
   const url = safeUrl(item.url);
   const external = new URL(url, location.href).origin !== location.origin;
   const target = external ? ' target="_blank" rel="noopener noreferrer"' : '';
-  const anchor = `<a class="${cls}" href="${esc(url)}"${target}>${esc(label || item.text || '查看')} ${titleOnly ? '' : isDownload(item) ? '↓' : external ? '↗' : '→'}</a>`;
+  const anchor = `<a class="${cls}" href="${esc(url)}"${target}>${esc(label || item.text || '查看')} ${titleOnly ? '' : actionIcon(isDownload(item))}</a>`;
   return anchor;
 }
 document.querySelector('#header').innerHTML = `<a class="skip" href="#main">跳到主要内容</a><div class="nav-wrap"><a class="brand" href="https://www.casualro.top/"><span class="brand-mark" aria-hidden="true">✿</span><span>随缘仙境<small>CASUAL RAGNAROK</small></span></a><nav aria-label="主导航">${nav.map(([id,name,url])=>`<a href="${url}" ${id===page?'aria-current="page"':''} ${id==='store'?'target="_blank" rel="noopener noreferrer"':''}>${name}</a>`).join('')}</nav><span class="nav-note" aria-hidden="true">♡ Have a lovely adventure</span></div>`;
