@@ -1,0 +1,9 @@
+/* Match the original resource table typography across the documentation site. */
+:root { --cro-font: "Comic Sans MS", "Microsoft YaHei", "PingFang SC", sans-serif; }
+:root:root body, :root:root body *, #cro-document-nav, #cro-document-nav * {
+  font-family: var(--cro-font) !important;
+}
+:root:root body pre, :root:root body code, :root:root body kbd, :root:root body samp,
+:root:root body pre *, :root:root body code * {
+  font-family: Consolas, "Courier New", monospace !important;
+}
