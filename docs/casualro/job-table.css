@@ -1,0 +1,18 @@
+/* Keep the original merged career table; share the catalog's sakura tokens. */
+.job-page{max-width:1600px}
+.job-page>.text-link{font-size:13px}
+.job-toolbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:22px 0}
+.job-toolbar p{color:var(--muted);font-size:13px;margin:0}
+.job-table{overflow:auto;border:1px solid var(--line);border-radius:20px;background:var(--paper);box-shadow:0 8px 30px #b57d8c0b}
+.job-table table{width:100%;min-width:1180px;border:0;border-collapse:separate;border-spacing:0;font-size:12px;line-height:1.8}
+.job-table th,.job-table td{padding:17px 12px;border:0;border-right:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center;vertical-align:middle;color:var(--ink)}
+.job-table th{background:#f8e7ef;color:#94617b;font-weight:600;white-space:nowrap}
+.job-table tr:first-child th{background:#fcf2f6;color:#a38395;font-size:11px;padding:10px}
+.job-table td[rowspan]{background:#fff6fa}
+.job-table td:last-child,.job-table th:last-child{border-right:0}
+.job-table tr:last-child td{border-bottom:0}
+.job-table tr:hover td{background:#fcf0f6}
+.job-table td a{display:block;color:#a45379;text-decoration:none;border-radius:9px;padding:6px;transition:background .15s}
+.job-table td a:hover,.job-table td a:focus-visible{background:#f5deea;color:#803857;text-decoration:underline;text-underline-offset:4px}
+.job-table:focus-visible{outline:2px solid #c3688b;outline-offset:4px}
+@media(max-width:600px){.job-toolbar{align-items:flex-start;flex-direction:column}.job-table{border-radius:14px}.job-page .page-intro h1{font-size:27px}}
