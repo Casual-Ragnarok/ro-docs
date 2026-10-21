@@ -45,15 +45,24 @@
     for (const group of document.querySelectorAll('.nav-docs')) {
     const toggle = group.querySelector('.nav-toggle');
     const submenu = group.querySelector('.nav-submenu');
+    let closeTimer;
     function open(value) {
+      clearTimeout(closeTimer);
       submenu.hidden = !value;
       toggle.setAttribute('aria-expanded', String(value));
       toggle.setAttribute('aria-label', value ? '收起文档资料菜单' : '展开文档资料菜单');
     }
     toggle.addEventListener('click', event => { event.preventDefault(); event.stopPropagation(); open(submenu.hidden); });
     group.querySelector('.docs-link').addEventListener('pointerenter', event => { if (event.pointerType === 'mouse') open(true); });
-    group.addEventListener('pointerleave', () => { if (!group.contains(document.activeElement)) open(false); });
-    group.addEventListener('focusout', event => { if (!group.contains(event.relatedTarget)) open(false); });
+    // Touch browsers may blur the toggle and emit pointerleave before the link click.
+    // Keep links mounted until their native click can navigate.
+    group.addEventListener('pointerenter', () => clearTimeout(closeTimer));
+    group.addEventListener('pointerleave', event => {
+      if (event.pointerType !== 'mouse') return;
+      closeTimer = setTimeout(() => {
+        if (!group.contains(document.activeElement)) open(false);
+      }, 200);
+    });
     document.addEventListener('click', event => { if (!group.contains(event.target)) open(false); });
     document.addEventListener('keydown', event => { if (event.key === 'Escape' && !submenu.hidden) { open(false); toggle.focus(); } });
     }

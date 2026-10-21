@@ -12,3 +12,14 @@
 @media(max-width:600px){.cro-global-header .nav-wrap{padding:18px 20px 12px;gap:18px}.cro-global-header .brand{font-size:20px}.cro-global-header .brand-mark{width:40px;height:40px;font-size:26px}.cro-global-header nav{width:100%;gap:2px;justify-content:space-between}.cro-global-header nav>a,.cro-global-header .docs-link{font-size:11px;padding:8px 9px}.nav-docs .docs-link{padding-right:2px!important}.nav-toggle{min-width:25px;min-height:32px;padding-right:6px}.nav-submenu{left:auto;right:-30px;width:230px}.cro-global-header .cro-community-menu{position:absolute;right:20px;top:18px}.cro-has-global-nav .toolbar{top:150px}.cro-has-global-nav .layout aside{position:static;max-height:none}}
 
 .cro-global-header .nav-toggle{border:0;box-shadow:none;background:transparent;border-radius:0 20px 20px 0;padding:0 10px 0 4px;min-height:38px}
+
+/* Give links and the split dropdown the same text center on both rows. */
+.cro-global-header nav{align-items:center;--cro-nav-item-height:40px}
+.cro-global-header nav>a,.cro-global-header nav>.nav-docs{height:var(--cro-nav-item-height);min-height:var(--cro-nav-item-height);margin-block:0}
+.cro-global-header nav>a,.cro-global-header .nav-docs .docs-link{display:flex;align-items:center;padding-top:0;padding-bottom:0;line-height:1.5}
+.cro-global-header .nav-docs .docs-link{height:100%}
+.cro-global-header .nav-docs .nav-toggle{height:100%;min-height:0;align-self:stretch}
+.nav-submenu{touch-action:manipulation}
+@media(max-width:600px){.cro-global-header nav{--cro-nav-item-height:36px}}
+@media(max-width:600px){.cro-global-header nav{flex-wrap:nowrap;gap:2px;justify-content:space-between}.cro-global-header nav>a,.cro-global-header .nav-docs .docs-link{padding-left:4px;padding-right:4px}.cro-global-header .nav-docs .nav-toggle{min-width:22px;width:22px;padding-left:3px;padding-right:3px}}
+@media(max-width:360px){.cro-global-header nav>a,.cro-global-header .docs-link{font-size:10px;padding-left:2px;padding-right:2px}}
