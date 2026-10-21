@@ -58,5 +58,6 @@
     document.addEventListener('keydown', event => { if (event.key === 'Escape' && !submenu.hidden) { open(false); toggle.focus(); } });
     }
   }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initialize); else initialize();
+  // Run after existing deferred scripts have installed their shared header controls.
+  if (document.readyState !== 'complete') document.addEventListener('DOMContentLoaded', initialize, { once: true }); else initialize();
 })();
