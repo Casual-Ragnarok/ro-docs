@@ -1,6 +1,5 @@
 const page = document.body.dataset.page || 'home';
 document.title = `${({home:'首页',npcs:'NPC 脚本索引',docs:'文档与工具资料',downloads:'客户端补丁'})[page]} · 随缘仙境`;
-const nav = [['home','首页','https://www.casualro.top/'],['npcs','NPC 索引','https://npc.casualro.top/'],['store','脚本商城','https://store.casualro.top/'],['docs','文档资料','https://docs.casualro.top/'],['downloads','补丁下载','https://grf.casualro.top/'],['features','特色介绍','https://feature.casualro.top/']];
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const safeUrl = value => {
   try {
@@ -29,8 +28,6 @@ function link(item, label, cls = 'text-link', titleOnly = false) {
   const anchor = `<a class="${cls}" href="${esc(url)}"${target}>${esc(label || item.text || '查看')} ${titleOnly ? '' : actionIcon(isDownload(item))}</a>`;
   return anchor;
 }
-document.querySelector('#header').innerHTML = `<a class="skip" href="#main">跳到主要内容</a><div class="nav-wrap"><a class="brand" href="https://www.casualro.top/"><span class="brand-mark" aria-hidden="true">✿</span><span>随缘仙境<small>CASUAL RAGNAROK</small></span></a><nav aria-label="主导航">${nav.map(([id,name,url])=>`<a href="${url}" ${id===page?'aria-current="page"':''} ${id==='store'?'target="_blank" rel="noopener noreferrer"':''}>${name}</a>`).join('')}</nav><span class="nav-note" aria-hidden="true">♡ Have a lovely adventure</span></div>`;
-document.querySelector('#footer').innerHTML = '<span>✿ 随缘仙境 · Casual Ragnarok Online</span><span>愿每一次传送，都通往喜欢的地方。 ♡</span>';
 const main = document.querySelector('#main');
 const definitions = {
   npcs: ['SCRIPT DIRECTORY','NPC 脚本索引','知道自己要找什么？按编号、名称或关键词，直接定位脚本。','索引负责快速查找，商城提供完整介绍与购买信息。','搜索编号、名称或功能，例如 1047、商店'],
